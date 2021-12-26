@@ -137,3 +137,17 @@ print(df['NEW_EXAM_DATE'][:60])
 51    2021/9/28 01:50:23 PM
 52    2021/9/28 01:20:12 PM
 ```
+
+# 前面二種日期處理方式，跑df資料的方式要用apply
+```python
+def convertDS(d):
+    try:
+        return datetime.strptime(d, "%Y/%m/%d")
+    except Exception as e:
+        return datetime.strptime(d, "%Y/%m/%d %H:%M:%S")
+
+df = pd.DataFrame([['2021/12/19', '9999/12/31'],['2021/12/19 12:23:40', '2021/12/20']], columns=['DATE', 'DATE2']), ['DATE', 'DATE2']
+
+df['DATE'] = df['DATE'].apply(lambda x: convertDS(x) if type(x)==str else pd.NaT)
+
+```
