@@ -138,7 +138,7 @@ print(df['NEW_EXAM_DATE'][:60])
 52    2021/9/28 01:20:12 PM
 ```
 
-# 前面二種日期處理方式，跑df資料的方式要用apply
+# 跑df資料的方式要用apply
 ```python
 def convertDS(d):
     try:
